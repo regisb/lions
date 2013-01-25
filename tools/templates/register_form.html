@@ -24,7 +24,7 @@
     <script src="{{ STATIC_URL }}js/jquery-ui-1.10.0.min.js"></script>
     <script>
       $(function() {
-        $("#datepicker").datepicker({
+        $("#datepicker input").datepicker({
           changeMonth: true,
           changeYear: true
         });
@@ -54,23 +54,61 @@
         <div class="span12">
           <form id="form-register" class="form-horizontal" method="post" action="{% url get_form %}">
             {% csrf_token %}
-            <div class="control-group"><label class="control-label">First name</label><div class="controls"><input type="text" name="first_name"></div></div>
-            <div class="control-group"><label class="control-label">Last name</label><div class="controls"><input type="text" name="last_name"></div></div>
-            <div class="control-group"><label class="control-label">Email</label><div class="controls"><input type="text" name="email"></div></div>
-            <div class="control-group"><label class="control-label">Phone number</label><div class="controls"><input type="text" name="phone_number"></div></div>
-            <div class="control-group"><label class="control-label">Gender</label><div class="controls"><select name="gender"><option>male</option><option>female</option></select></div></div>
-            <div class="control-group"><label class="control-label">Date of birth</label><div class="controls"><input id="datepicker" type="text" name="birthday"></div></div>
-            <div class="control-group"><label class="control-label">Years of volleyball experience</label><div class="controls"><input type="text" name="experience"></div></div>
-            <div class="control-group"><label class="control-label">Address</label>
-              <div class="controls"><input type="text" name="address1"></div>
-              <div class="controls"><input type="text" name="address2"></div>
+            <div class="control-group">
+              <label class="control-label">First name</label>
+              <div class="controls">
+                {{ form.first_name }}
+              </div>
             </div>
-            <div class="control-group"><label class="control-label">City and post code</label><div class="controls"><input type="text" name="address3"></div></div>
-              <input type="submit" id="submit-register-form" value="Get your form">
-              <img src="{{ STATIC_URL}}img/spinner.gif" id="spinner" style="display: none;">
+            <div class="control-group">
+              <label class="control-label">Last name</label>
+              <div class="controls">
+                {{ form.last_name }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Email</label>
+              <div class="controls">
+                {{ form.email }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Phone number</label>
+              <div class="controls">
+                {{ form.phone_number }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Gender</label>
+              <div class="controls">
+                {{ form.gender }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Date of birth</label>
+              <div class="controls" id="datepicker">
+                {{ form.birthday }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Years of volleyball experience</label>
+              <div class="controls">
+                {{ form.experience }}
+              </div>
+            </div>
+            <div class="control-group"><label class="control-label">Address</label>
+              <div class="controls">{{ form.address1 }}</div>
+              <div class="controls">{{ form.address2 }}</div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">City and post code</label>
+              <div class="controls">{{ form.address3 }}</div>
+            </div>
+            <input type="submit" id="submit-register-form" value="Get your form">
+            <img src="{{ STATIC_URL}}img/spinner.gif" id="spinner" style="display: none;">
           </form>
-        </div>
-      </div>
+        </div><!-- span12 -->
+      </div><!-- row -->
     </div><!-- content container -->
   </body>
 </html>

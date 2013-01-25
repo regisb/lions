@@ -1,3 +1,9 @@
-<div class="alert alert-success">
-  Your registration form has been generated!
-</div>
+{% if form.errors %}
+  <div class="alert alert-error">
+    {{ form.errors }}
+  </div>
+{% else %}
+  <div class="alert alert-success">
+    Your registration form has been generated!
+  </div>
+{% endif %}
