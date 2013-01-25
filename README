@@ -20,3 +20,7 @@ Edit the lions/settings_prod.py appropriately.
 Verify everything is working:
 
   ./manage.py test tools
+
+Then you can start a test server:
+
+  ./manage.py runserver
