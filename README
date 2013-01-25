@@ -5,6 +5,10 @@ Install dependencies in a virtual environment:
   source env/bin/activate
   pip install -r dependencies.txt
 
+Install also Latex dependencies:
+
+  sudo apt-get install texlive texlive-latex-extra
+
 Setup instructions:
 
   cp lions/settings_prod.sample.py lions/settings_prod.py

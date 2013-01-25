@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get your Lions registration form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--style-->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+    <!--<link href="{{ STATIC_URL }}css/jquery-ui.css" />-->
+
+    <!--js-->
+    <script src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.form.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-1.10.0.min.js"></script>
+    <script>
+      $(function() {
+        $("#datepicker").datepicker({
+          changeMonth: true,
+          changeYear: true
+        });
+      });
+      $(document).ready(function() { 
+          // bind forms using 'ajaxForm' 
+          $('#form-register').ajaxForm({
+            beforeSend: function() {
+              $("#submit-register-form").toggle();
+              $("#spinner").toggle();
+            },
+            success: function(data) {
+              $("#submit-register-form").toggle();
+              $("#spinner").toggle();
+              $("#result").html(data);
+            },
+          }); 
+      });
+    </script>
+  </head>
+  <body>
+
+    <div id='content' class='container'>
+      <div id="result"></div>
+
+      <div class="row">
+        <div class="span12">
+          <form id="form-register" class"form-horizontal" method="post" action="{% url get_form %}">
+            {% csrf_token %}
+            <div class="control-group"><label class="control-label">First name</label><div class="controls"><input type="text" name="first_name"></div></div>
+            <div class="control-group"><label class="control-label">Last name</label><div class="controls"><input type="text" name="last_name"></div></div>
+            <div class="control-group"><label class="control-label">Email</label><div class="controls"><input type="text" name="email"></div></div>
+            <div class="control-group"><label class="control-label">Phone number</label><div class="controls"><input type="text" name="phone_number"></div></div>
+            <label>Gender</label><select name="gender"><option>male</option><option>female</option></select>
+            <div class="control-group"><label class="control-label">Date of birth</label><div class="controls"><input id="datepicker" type="text" name="birthday"></div></div>
+            <div class="control-group"><label class="control-label">Years of volleyball experience</label><div class="controls"><input type="text" name="experience"></div></div>
+            <div class="control-group"><label class="control-label">Address</label>
+              <div class="controls"><input type="text" name="address1"></div>
+              <div class="controls"><input type="text" name="address2"></div>
+            </div>
+            <div class="control-group"><label class="control-label">City and post code</label><div class="controls"><input type="text" name="address3"></div></div>
+              <input type="submit" id="submit-register-form" value="Get your form">
+              <img src="{{ STATIC_URL}}img/spinner.gif" id="spinner" style="display: none;">
+          </form>
+        </div>
+      </div>
+    </div><!-- content container -->
+  </body>
+</html>
+
