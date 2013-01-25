@@ -52,13 +52,13 @@
 
       <div class="row">
         <div class="span12">
-          <form id="form-register" class"form-horizontal" method="post" action="{% url get_form %}">
+          <form id="form-register" class="form-horizontal" method="post" action="{% url get_form %}">
             {% csrf_token %}
             <div class="control-group"><label class="control-label">First name</label><div class="controls"><input type="text" name="first_name"></div></div>
             <div class="control-group"><label class="control-label">Last name</label><div class="controls"><input type="text" name="last_name"></div></div>
             <div class="control-group"><label class="control-label">Email</label><div class="controls"><input type="text" name="email"></div></div>
             <div class="control-group"><label class="control-label">Phone number</label><div class="controls"><input type="text" name="phone_number"></div></div>
-            <label>Gender</label><select name="gender"><option>male</option><option>female</option></select>
+            <div class="control-group"><label class="control-label">Gender</label><div class="controls"><select name="gender"><option>male</option><option>female</option></select></div></div>
             <div class="control-group"><label class="control-label">Date of birth</label><div class="controls"><input id="datepicker" type="text" name="birthday"></div></div>
             <div class="control-group"><label class="control-label">Years of volleyball experience</label><div class="controls"><input type="text" name="experience"></div></div>
             <div class="control-group"><label class="control-label">Address</label>
