@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get your Lions registration form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--style-->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+    <!--<link href="{{ STATIC_URL }}css/jquery-ui.css" />-->
+
+    <!--js-->
+    <script src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.form.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-1.10.0.min.js"></script>
+    <script>
+      $(function() {
+        $("#datepicker input").datepicker({
+          minDate: "-100Y",
+          maxDate: 0,
+          yearRange: "-100:+100",
+          changeMonth: true,
+          changeYear: true
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+    <div id='content' class='container'>
+
+      {% if form.errors %}
+        <div class="alert alert-error">
+          {{ form.errors }}
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="span12">
+          <form id="form-register" class="form-horizontal" method="post" action="{% url get_form %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="control-group">
+              <label class="control-label">First name</label>
+              <div class="controls">
+                {{ form.firstname }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Last name</label>
+              <div class="controls">
+                {{ form.lastname }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Email</label>
+              <div class="controls">
+                {{ form.email }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Phone number</label>
+              <div class="controls">
+                {{ form.mobile }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Gender</label>
+              <div class="controls">
+                {{ form.gender }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Date of birth</label>
+              <div class="controls" id="datepicker">
+                {{ form.birthday }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Years of volleyball experience</label>
+              <div class="controls">
+                {{ form.experience }}
+              </div>
+            </div>
+            <div class="control-group"><label class="control-label">Address</label>
+              <div class="controls">{{ form.addresslineone }}</div>
+              <div class="controls">{{ form.addresslinetwo }}</div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">City and post code</label>
+              <div class="controls">{{ form.cityandpostcode }}</div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">A nice picture of yourself</label>
+              <div class="controls">{{ form.img }}</div>
+            </div>
+            <input type="submit" id="submit-register-form" value="Get your form">
+            <img src="{{ STATIC_URL}}img/spinner.gif" id="spinner" style="display: none;">
+          </form>
+        </div><!-- span12 -->
+      </div><!-- row -->
+    </div><!-- content container -->
+  </body>
+</html>
+

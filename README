@@ -1,0 +1,26 @@
+
+Install dependencies in a virtual environment:
+
+  virtualenv ./env
+  source env/bin/activate
+  pip install -r dependencies.txt
+
+Install also Latex and image processing dependencies:
+
+  sudo apt-get install texlive texlive-latex-extra imagemagick
+
+Setup instructions:
+
+  cp lions/settings_prod.sample.py lions/settings_prod.py
+
+Edit the lions/settings_prod.py appropriately.
+
+  ./manage.py syncdb # a superuser is not necessary
+
+Verify everything is working:
+
+  ./manage.py test tools
+
+Then you can start a test server:
+
+  ./manage.py runserver
