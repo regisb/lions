@@ -48,9 +48,11 @@ def get_form(request):
   with open(os.path.join(img_subfolder, img_name), 'w') as img_dst:
     print "image file:", img_dst.name
     img_dst.write(img_content)
- 
-  texoptions = "\\def\\gpath{" + img_subfolder + "/} "
+  texoptions = "\\documentclass[a4paper,12pt]{article} "
+  texoptions += "\usepackage[utf8]{inputenc} "
+  texoptions += "\\def\\gpath{" + img_subfolder + "/} "
   texoptions += "\\def\\photoid{"+ img_name + "} " 
+  texoptions += "\\def\\datapath{"+ data_dir + "} " 
 
   purge_table = dict((char, None) for char in u"\\{}$&#^_%~" )
   for field in form:
@@ -63,6 +65,7 @@ def get_form(request):
   # Compile
   result = subprocess.call(["pdflatex",
                             "-halt-on-error",
+                            "-jobname", "lions",
                             "--output-directory=" + tempdir,
                             texoptions])
   if result == 0:
