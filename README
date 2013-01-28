@@ -1,13 +1,12 @@
+Install virtualenv, pip and LaTeX
+
+  sudo apt-get install python-virtualenv python-pip texlive texlive-latex-extra
 
 Install dependencies in a virtual environment:
 
   virtualenv ./env
   source env/bin/activate
   pip install -r dependencies.txt
-
-Install also Latex and image processing dependencies:
-
-  sudo apt-get install texlive texlive-latex-extra imagemagick
 
 Setup instructions:
 
