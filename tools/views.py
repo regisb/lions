@@ -30,7 +30,7 @@ def get_form(request):
   # Process form
   form = RegisterForm(request.POST, request.FILES)
   if not form.is_valid():
-    return render_to_response("register_form_response.html",
+    return render_to_response("register_form.html",
                               {"form": form},
                               context_instance=RequestContext(request))
 
@@ -72,7 +72,9 @@ def get_form(request):
     response['Content-Disposition'] = 'attachment; filename=lions_register.pdf'
   else:
     # Return error message
-    response = HttpResponse("Sorry, there seems to be something wrong with the image you provided")
+    return render_to_response("register_form.html",
+                              {"form": form, "error": "Sorry, there seems to be something wrong with the image you provided"},
+                              context_instance=RequestContext(request))
 
   # Delete temporary directory
   shutil.rmtree(tempdir)
