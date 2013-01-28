@@ -38,6 +38,11 @@
 
     <div id='content' class='container'>
 
+      {% if error %}
+        <div class="alert alert-error">
+          {{ error }}
+        </div>
+      {% endif %}
       {% if form.errors %}
         <div class="alert alert-error">
           {{ form.errors }}
