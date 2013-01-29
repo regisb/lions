@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.core.servers.basehttp import FileWrapper
 from django.shortcuts import render_to_response
@@ -54,12 +55,13 @@ def get_form(request):
   texoptions += "\\def\\photoid{"+ img_name + "} " 
   texoptions += "\\def\\datapath{"+ data_dir + "} " 
 
-  purge_table = dict((char, None) for char in u"\\{}$&#^_%~" )
+  purge_table = dict((char, None) for char in "\\{}$&#^_%~" )
   for field in form:
     if field.name != "img":
       texoptions += "\\def\\" + field.name + "{"+ field.data.translate(purge_table) + "} "
   
   texoptions += "\\input{"+ os.path.join(data_dir, "lions.tex") + "}"
+  texoptions = texoptions.encode("utf-8")# encode everything in ascii. Don't ask.
   print "tex options: ", texoptions
 
   # Compile
