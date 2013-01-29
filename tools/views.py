@@ -63,24 +63,24 @@ def get_form(request):
   print "tex options: ", texoptions
 
   # Compile
-  result = subprocess.call(["pdflatex",
-                            "-halt-on-error",
-                            "-jobname", "lions",
-                            "--output-directory=" + tempdir,
-                            texoptions])
-  if result == 0:
-    # Return pdf file
+  try:
+    result = subprocess.Popen(["pdflatex",
+                               "-halt-on-error",
+                               "-jobname", "lions",
+                               "--output-directory=" + tempdir,
+                               texoptions],
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE).communicate()[0]
     response = HttpResponse(open(os.path.join(tempdir, "lions.pdf")).read(),
-                          content_type='application/pdf')
+                            content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename=lions_register.pdf'
-  else:
-    # Return error message
-    return render_to_response("register_form.html",
-                              {"form": form, "error": "Sorry, there seems to be something wrong with the image you provided"},
-                              context_instance=RequestContext(request))
+  except:
+    print result
+    response = render_to_response("register_form.html",
+                                  {"form": form, "error": "Sorry, there seems to be something wrong with the image you provided"},
+                                  context_instance=RequestContext(request))
 
   # Delete temporary directory
   shutil.rmtree(tempdir)
-  print "directory tree deleted"
 
   return response
