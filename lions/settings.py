@@ -1,8 +1,10 @@
 # Django settings for lions project.
-import os
+import os, sys
 
-# TODO set this to false in a production environment
-DEBUG = True
+# Don't debug in production
+DEBUG = False
+if len(sys.argv) == 2 and sys.argv[1] == "runserver":
+  DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # People to which an email is sent on error
