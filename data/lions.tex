@@ -1,3 +1,21 @@
+% 
+% copyright Régis Behmo and Alexandre Fournier, distributed under the 
+% following terms:
+% 
+%            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+%                    Version 2, December 2004
+% 
+% Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+% 
+% Everyone is permitted to copy and distribute verbatim or modified
+% copies of this license document, and changing it is allowed as long
+% as the name is changed.
+% 
+%            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+%   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+% 
+%  0. You just DO WHAT THE FUCK YOU WANT TO.
+%
 \usepackage{graphicx}
 \usepackage{lmodern}
 \usepackage{multirow}
@@ -9,11 +27,14 @@
 \usepackage[british]{babel}
 
 \graphicspath{{\datapath/} {\gpath/}}
+\def\male{male}
+\def\female{female}
 
 \begin{document}
 \sffamily
 \thispagestyle{empty}
 \begin{center}
+
 
 REGISTRATION 2012-2013
 
@@ -32,7 +53,7 @@ LONDON LIONHEARTS VOLLEYBALL CLUB
                                                         & \\
                                                         &Mobile: \mobile\\
                                                         & \\
-                                                        &Gender: Male \if \gender male \Square\ \else \CheckedBox \fi\ Female  \if \gender male \CheckedBox  \else \Square\fi \\
+                                                        &Gender: Male \ifx\gender\male \CheckedBox \else \Square \fi\ Female  \ifx\gender\male \Square \else\CheckedBox\fi \\
                                                         & \\
                                                         &Date of birth: \birthday\\
                                                         & \\
