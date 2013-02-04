@@ -24,12 +24,10 @@
 \usepackage[T1]{fontenc}
 \setlength{\textheight}{800pt}
 \usepackage{ulem}
+\usepackage{etoolbox}
 \usepackage[british]{babel}
 
 \graphicspath{{\datapath/} {\gpath/}}
-\def\male{male}
-\def\female{female}
-
 \begin{document}
 \sffamily
 \thispagestyle{empty}
@@ -53,7 +51,7 @@ LONDON LIONHEARTS VOLLEYBALL CLUB
                                                         & \\
                                                         &Mobile: \mobile\\
                                                         & \\
-                                                        &Gender: Male \ifx\gender\male \CheckedBox \else \Square \fi\ Female  \ifx\gender\male \Square \else\CheckedBox\fi \\
+                                                        &Gender: Male \ifdefstring{\gender}{male}{\CheckedBox}{\Square}\ Female  \ifdefstring{\gender}{male}{\Square}{\CheckedBox} \\
                                                         & \\
                                                         &Date of birth: \birthday\\
                                                         & \\
@@ -78,7 +76,7 @@ LONDON LIONHEARTS VOLLEYBALL CLUB
 Name: & \firstname\ \lastname & Phone: \mobile\\ 
 Club:& LONDON  LIONHEARTS & Email: \email\\
 Address:&\normalsize \addresslineone   & \sout{Junior till Season}:\\
-&\normalsize \addresslinetwo, \cityandpostcode
+        &\normalsize \addresslinetwo\ifdefempty{\addresslinetwo}{}{, } \cityandpostcode
 \end{tabular}
 %\vspace{1cm}
 

@@ -32,10 +32,10 @@ class RegisterForm(forms.Form):
   email = forms.EmailField()
   mobile = forms.CharField(max_length=20)
   gender = forms.ChoiceField(choices=[("male", "Male"), ("female", "Female")])
-  birthday = forms.DateField()
+  birthday = forms.DateField(input_formats=['%d/%m/%Y'])
   experience = forms.IntegerField()
   addresslineone = forms.CharField()
-  addresslinetwo = forms.CharField()
+  addresslinetwo = forms.CharField(required=False)
   cityandpostcode = forms.CharField()
   img = forms.FileField()
 
