@@ -1,3 +1,21 @@
+% 
+% copyright Régis Behmo and Alexandre Fournier, distributed under the 
+% following terms:
+% 
+%            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+%                    Version 2, December 2004
+% 
+% Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+% 
+% Everyone is permitted to copy and distribute verbatim or modified
+% copies of this license document, and changing it is allowed as long
+% as the name is changed.
+% 
+%            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+%   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+% 
+%  0. You just DO WHAT THE FUCK YOU WANT TO.
+%
 \usepackage{graphicx}
 \usepackage{lmodern}
 \usepackage{multirow}
@@ -6,16 +24,17 @@
 \usepackage[T1]{fontenc}
 \setlength{\textheight}{800pt}
 \usepackage{ulem}
+\usepackage{etoolbox}
 \usepackage[british]{babel}
 
 \graphicspath{{\datapath/} {\gpath/}}
-
 \begin{document}
 \sffamily
 \thispagestyle{empty}
 \begin{center}
 
-REGISTRATION 2012-2013
+
+REGISTRATION 2013-2014
 
 LONDON LIONHEARTS VOLLEYBALL CLUB
 
@@ -32,18 +51,18 @@ LONDON LIONHEARTS VOLLEYBALL CLUB
                                                         & \\
                                                         &Mobile: \mobile\\
                                                         & \\
-                                                        &Gender: Male \if \gender male \Square\ \else \CheckedBox \fi\ Female  \if \gender male \CheckedBox  \else \Square\fi \\
+                                                        &Gender: Male \ifdefstring{\gender}{male}{\CheckedBox}{\Square}\ Female  \ifdefstring{\gender}{male}{\Square}{\CheckedBox} \\
                                                         & \\
                                                         &Date of birth: \birthday\\
                                                         & \\
                                                         &Volleyball experience: \experience\ years\\
-                                                        & \\
+                                                        & team: \team \\
                                                         & \\
                                                         &Date:    \today \\
 \end{tabular}
 \vspace{0.7cm}
 
-{\bfseries Please. bring this document back to your team secretary as soon as possible so we can get you registered with the league quickly.}
+{\bfseries Please PRINT and bring this document back to your team secretary as soon as possible so we can get you registered with the league quickly.}
 \vspace{0.7cm}
 \hrule
 \Large
@@ -57,7 +76,7 @@ LONDON LIONHEARTS VOLLEYBALL CLUB
 Name: & \firstname\ \lastname & Phone: \mobile\\ 
 Club:& LONDON  LIONHEARTS & Email: \email\\
 Address:&\normalsize \addresslineone   & \sout{Junior till Season}:\\
-&\normalsize \addresslinetwo, \cityandpostcode
+        &\normalsize \addresslinetwo\ifdefempty{\addresslinetwo}{}{, } \cityandpostcode
 \end{tabular}
 %\vspace{1cm}
 
@@ -68,7 +87,7 @@ Address:&\normalsize \addresslineone   & \sout{Junior till Season}:\\
 \cline{1-3}
 \multicolumn{1}{|l}{Season }& \multicolumn{1}{|l}{ Div} & \multicolumn{1}{|l|}{Team} &  No.&   Signature & Signature \\
 \hline
-\multicolumn{1}{|l|}{2012 / 13}   &\multicolumn{1}{|l}{M2} &\multicolumn{1}{|l|}{ Lionhearts Predators} & & & \\
+\multicolumn{1}{|l|}{2013 / 14}   &\multicolumn{1}{|l}{\league} &\multicolumn{1}{|l|}{ Lionhearts \team} & & & \\
 \hline
 
 \multicolumn{1}{|l|}{} & \multicolumn{1}{|l|}{} &\multicolumn{1}{|l|}{} & & & \\
@@ -83,7 +102,7 @@ Address:&\normalsize \addresslineone   & \sout{Junior till Season}:\\
 
 \normalsize
 \begin{center}
-REGISTRATION 2012-2013
+REGISTRATION 2013-2014
 
 LONDON LIONHEARTS VOLLEYBALL CLUB
 \vspace{0.5cm}
@@ -104,16 +123,16 @@ PAYMENTS:
 \item ADULTS:
 2 x installments:
 \begin{itemize}
-  \item of \textsterling 120 if paid by 1st October 2012 and 1st February 2013 (save \textsterling 50)
-  \item of \textsterling 145 if paid later
+\item of \textsterling 165 if paid by 1st October 2013 and 1st February 2014 (save \textsterling 70)
+  \item of \textsterling 200 if paid later
 \end{itemize}
 
 \item STUDENTS (photocopy of student card required):
 
 2 x installments:
 \begin{itemize}
-  \item \textsterling 85 if paid by 1st October 2012 and 1st February 2013 (save \textsterling 30)
-  \item \textsterling 100 if paid later
+  \item \textsterling 125 if paid by 1st October 2012 and 1st February 2013 (save \textsterling 50)
+  \item \textsterling 150 if paid later
 \end{itemize}
 \end{itemize}
 
@@ -129,8 +148,7 @@ Any questions, don't hesitate to contact us by email info@londonlionhearts.co.uk
 Or call us directly at:
 
 \begin{itemize}
-  \item Allan - 07960372220	club manager and head coach
-  \item Nico - 07837820975	club secretary
+  \item Nico - 07 837 820 975	club secretary
 \end{itemize}
 \newpage
 

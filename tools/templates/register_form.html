@@ -25,6 +25,7 @@
     <script>
       $(function() {
         $("#datepicker input").datepicker({
+          dateFormat: "dd/mm/yy",
           minDate: "-100Y",
           maxDate: 0,
           yearRange: "-100:+100",
@@ -93,6 +94,12 @@
               <label class="control-label">Years of volleyball experience</label>
               <div class="controls">
                 {{ form.experience }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Team</label>
+              <div class="controls">
+                {{ form.team }}
               </div>
             </div>
             <div class="control-group"><label class="control-label">Address</label>
