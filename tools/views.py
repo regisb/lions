@@ -37,7 +37,7 @@ teams = {
     "predators": Team(u"Men",   u"Predators", u"M2"),
     "east":      Team(u"Women", u"East",      u"WP"),
     "jameja":    Team(u"Women", u"Jame-Ja",   u"WP"),
-    "spirit":    Team(u"Women", u"Spirit",    u"W2"),
+    "cats":      Team(u"Women", u"Cats",    u"W2"),
     "beats":     Team(u"Women", u"Beats",     u"W2"),
     "cubs":      Team(u"Women", u"Cubs",      u"W2"),
     "beginners": Team(u"Mixed", u"Beginners", u"")
